@@ -695,16 +695,16 @@ var TwentyFortyEightGame = function(config) {
 		var code = e.keyCode || e.charCode;
 
 		switch (code) {
-			// Set I key to Up
+			// Set UP key to Up
 			case 38: 	gameWorld.swipeUp();
 			break;
-			// Set J key to Left
+			// Set LEFT key to Left
 			case 37: 	gameWorld.swipeLeft();
 			break;
-			// Set K key to Down
+			// Set DOWN key to Down
 			case 40: 	gameWorld.swipeDown();
 			break;
-			// Set L key to Right
+			// Set RIGHT key to Right
 			case 39: 	gameWorld.swipeRight();
 			break;
 		}
