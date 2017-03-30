@@ -690,7 +690,7 @@ var TwentyFortyEightGame = function(config) {
 	var gameWorld = new World(canvas, size);
 	holder.appendChild(canvas);
 
-	window.addEventListener("keypress", function(e) {
+	window.addEventListener("keydown", function(e) {
 		// get keycode
 		var code = e.keyCode || e.charCode;
 
