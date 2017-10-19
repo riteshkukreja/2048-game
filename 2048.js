@@ -25,6 +25,9 @@ var TwentyFortyEightGame = function(config) {
 		// Matrix to hold the game
 		var world = [];
 
+		// Matrix to hold previous state
+		var prevWorld = [];
+
 		// Player score
 		var score = 0;
 
@@ -425,9 +428,20 @@ var TwentyFortyEightGame = function(config) {
 		 * 	@Param dir - Direction in which the swipe has been made
 		 */
 		var update = function(dir) {
-
 			// If game has already been over, then do nothing
 			if(gameOver) return;
+
+			// update previous world
+			prevWorld = [];
+			// copy world data to dummy world
+			for(var i = 0; i < size; i++) {
+				var t = [];
+				for(var j = 0; j < size; j++) {
+					t.push(world[i][j]);
+				}
+
+				prevWorld.push(t);
+			}
 
 			// Swipe the blocks so they are adjacent to each other
 			world = swipe(world, dir);
@@ -462,8 +476,11 @@ var TwentyFortyEightGame = function(config) {
 				return;
 			}
 
-			// If empty blocks in the world, add the start block
-			world[pos[0]][pos[1]] = states.START;
+			// check if the world changed, ie the move was valid
+			if(!matchWorlds(prevWorld, world)) {
+				// If empty blocks in the world, add the start block
+				world[pos[0]][pos[1]] = states.START;
+			}
 
 			// Keep Drawing
 			draw();
